@@ -19,13 +19,15 @@ Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'OmniSharp/omnisharp-vim' " C# IDE Like for VIM
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Generell Settings
 set mouse=a
-
 syntax enable
+color peachpuff
 
 set noet ci pi sts=0 sw=4 ts=4
 set autoindent smartindent
@@ -47,3 +49,8 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1 "Not working ??
+
+
+" OmniSharp Settings for WSL
+let g:OmniSharp_server_path = '/mnt/e/Programme/OmniSharp/omnisharp.http-win-x64/OmniSharp.exe'
+let g:OmniSharp_translate_cygwin_wsl = 1

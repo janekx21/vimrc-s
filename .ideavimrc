@@ -1,0 +1,32 @@
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" Map the write also to caps W
+command W w
+
+" Set leader to space
+let mapleader = " "
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+
+" Idea Settings
+set matchpairs=(:),{:},[:],<:>,":",':'
+set smd=on
+set idearefactormode=keep
+set gd=on
+
+" Emulated Plugins
+set commentary
+
+" Use Idea to join lines smartly
+set ideajoin

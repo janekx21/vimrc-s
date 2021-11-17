@@ -1,33 +1,6 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
-Plugin 'itchyny/lightline.vim' " Status-Bar plugin 
-Plugin 'terryma/vim-multiple-cursors'
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'OmniSharp/omnisharp-vim' " C# IDE Like for VIM
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 " Generell Settings
 set mouse=a
 syntax enable
-color peachpuff
 
 set noet ci pi sts=0 sw=4 ts=4
 set autoindent smartindent
@@ -36,21 +9,30 @@ set autoindent smartindent
 set laststatus=2
 set noshowmode
 
-" Nert Tree settings
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeDirArrowExpandable = '⭢'
-let g:NERDTreeDirArrowCollapsible = '⤵'
+" Copy to system clipboard as well
+set clipboard+=unnamed
 
-" YCM Settings
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_auto_trigger = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1 "Not working ??
+" Map the write also to caps W
+command W w
 
+" Set leader to space
+let mapleader = " "
 
-" OmniSharp Settings for WSL
-let g:OmniSharp_server_path = '/mnt/e/Programme/OmniSharp/omnisharp.http-win-x64/OmniSharp.exe'
-let g:OmniSharp_translate_cygwin_wsl = 1
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch

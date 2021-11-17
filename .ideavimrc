@@ -1,38 +1,49 @@
-" Copy to system clipboard as well
-set clipboard+=unnamed
+"" Source your .vimrc
+source ~/.vimrc
 
-" Map the write also to caps W
-command W w
+"" -- Suggested options --
+" Find more examples here: https://jb.gg/share-ideavimrc
+" Don't use Ex mode, use Q for formatting.
+map Q gq
 
-" Set leader to space
-let mapleader = " "
-
-" These create newlines like o and O but stay in normal mode
-nmap zj o<Esc>k
-nmap zk O<Esc>j
-
-" key bindings for quickly moving between windows
-" h left, l right, k up, j down
-nmap <leader>h <c-w>h
-nmap <leader>l <c-w>l
-nmap <leader>k <c-w>k
-nmap <leader>j <c-w>j
-
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map <leader>d to start debug
+map <leader>d <Action>(Debug)
 
 " Idea Settings
 set matchpairs=(:),{:},[:],<:>,":",':'
 set smd=on
 set idearefactormode=keep
 set gd=on
+set multiple-cursors
 
 " Emulated Plugins
-set commentary
+" not used
+" set commentary
 
 " Use Idea to join lines smartly
-set ideajoin
+" not used
+" set ideajoin
 
 " Paste from register "0 by default
-:nnoremap <expr> p (v:register ==# '"' ? '"0' : '') . 'p'
-:nnoremap <expr> P (v:register ==# '"' ? '"0' : '') . 'P'
-:xnoremap <expr> p (v:register ==# '"' ? '"0' : '') . 'p'
-:xnoremap <expr> P (v:register ==# '"' ? '"0' : '') . 'P'
+" currently not working!
+" :nnoremap <expr> p (v:register ==# '"' ? '"0' : '') . 'p'
+" :nnoremap <expr> P (v:register ==# '"' ? '"0' : '') . 'P'
+" :xnoremap <expr> p (v:register ==# '"' ? '"0' : '') . 'p'
+" :xnoremap <expr> P (v:register ==# '"' ? '"0' : '') . 'P'
+
+"" -- Handlers --
+" copy
+sethandler <C-C> a:ide
+" find
+sethandler <C-F> a:ide
+" commit
+sethandler <C-K> a:ide
+" show tooltip
+sethandler <C-Q> a:ide
+" replace
+sethandler <C-R> a:ide
+" save all
+sethandler <C-S> a:ide
+" paste
+sethandler <C-V> a:ide
